@@ -337,7 +337,7 @@ function MessageBubble({
         'relative rounded-2xl px-4 py-3',
         !isUser && 'w-full',
         isUser
-          ? 'bg-primary text-primary-foreground shadow-sm'
+          ? 'bg-primary/80 text-primary-foreground shadow-sm'
           : 'bg-primary/5 text-foreground',
       )}
     >
