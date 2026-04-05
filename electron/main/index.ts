@@ -76,6 +76,12 @@ if (process.platform === 'linux') {
   app.setDesktopName('clawx.desktop');
 }
 
+// Register custom protocol scheme for persona assets (must be before app.whenReady)
+protocol.registerSchemesAsPrivileged([{
+  scheme: 'clawx-asset',
+  privileges: { bypassCSP: true, supportFetchAPI: true }
+}]);
+
 // Prevent multiple instances of the app from running simultaneously.
 // Without this, two instances each spawn their own gateway process on the
 // same port, then each treats the other's gateway as "orphaned" and kills
@@ -279,11 +285,12 @@ async function initialize(): Promise<void> {
   logger.init();
   logger.info('=== ClawX Application Starting ===');
 
-  // Register custom protocol for serving persona assets from extraResources
-  protocol.registerFileProtocol('clawx-asset', (request, callback) => {
-    const url = request.url.replace('clawx-asset://', '');
-    const decodedUrl = decodeURIComponent(url);
-    callback({ path: decodedUrl });
+  // Register custom protocol handler for serving persona assets from extraResources
+  protocol.handle('clawx-asset', (request) => {
+    const filePath = request.url.replace('clawx-asset://', '');
+    const decodedPath = decodeURIComponent(filePath);
+    const { net } = require('electron') as typeof import('electron');
+    return net.fetch('file:///' + decodedPath);
   });
   logger.debug(
     `Runtime: platform=${process.platform}/${process.arch}, electron=${process.versions.electron}, node=${process.versions.node}, packaged=${app.isPackaged}, pid=${process.pid}, ppid=${process.ppid}`
