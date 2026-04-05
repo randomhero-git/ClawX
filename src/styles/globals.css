@@ -48,6 +48,8 @@
     --border: 240 3% 24%;
     --input: 240 3% 18%;
     --ring: 217.2 91.2% 59.8%;
+    --surface: 0 0% 8%;
+    --surface-muted: 0 0% 6%;
   }
 }
 
@@ -64,7 +66,12 @@
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    transition: background-color 2s ease, color 1s ease;
   }
+}
+
+*, *::before, *::after {
+  transition: background-color 2s ease, border-color 1s ease, color 1s ease;
 }
 
 /* Custom scrollbar */
@@ -180,6 +187,8 @@
   --foreground: 0 0% 95%;
   --sidebar-accent: 24 80% 20%;
   --sidebar-accent-foreground: 24 95% 53%;
+  --surface: 24 20% 8%;
+  --surface-muted: 24 15% 6%;
   --theme-bg-image: url('../../../resources/personas/hero/background.png');
 }
 
@@ -193,5 +202,7 @@
   --foreground: 0 0% 95%;
   --sidebar-accent: 102 73% 11%;
   --sidebar-accent-foreground: 102 73% 45%;
+  --surface: 142 20% 8%;
+  --surface-muted: 142 15% 6%;
   --theme-bg-image: url('../../../resources/personas/zero/background.png');
 }
