@@ -233,7 +233,10 @@ export function Sidebar() {
       <div className={cn("flex items-center p-2 h-12", sidebarCollapsed ? "justify-center" : "justify-between")}>
         {!sidebarCollapsed && (
           <div className="flex items-center gap-2 px-2 overflow-hidden">
-            <img src="/resources/personas/rand0mlabz-logo.png" alt="Rand0mLabz" className="h-[88px] w-auto" />
+            <img src={window.electron.resourcesPath
+              ? `file://${window.electron.resourcesPath}/personas/rand0mlabz-logo.png`
+              : '/resources/personas/rand0mlabz-logo.png'
+            } alt="Rand0mLabz" className="h-[88px] w-auto" />
           </div>
         )}
         <Button

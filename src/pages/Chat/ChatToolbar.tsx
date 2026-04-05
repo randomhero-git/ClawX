@@ -34,14 +34,18 @@ export function ChatToolbar() {
     [agents, currentAgentId],
   );
 
+  const personaImg = (path: string) => {
+    const base = window.electron.resourcesPath;
+    return base
+      ? `file://${base}/personas/${path}`
+      : `/resources/personas/${path}`;
+  };
+
   return (
     <div className="flex items-center gap-2">
       <div className="hidden sm:flex items-center gap-1.5 rounded-full border border-primary/10 bg-white/70 px-3 py-1.5 text-[12px] font-medium text-foreground/80 dark:bg-primary/5">
         <img
-          src={theme === 'hero'
-            ? '/resources/personas/hero/icon.png'
-            : '/resources/personas/zero/icon.png'
-          }
+          src={personaImg(theme === 'hero' ? 'hero/icon.png' : 'zero/icon.png')}
           alt={theme === 'hero' ? 'Hero' : 'Zero'}
           className="h-5 w-5 rounded-full object-cover shrink-0"
         />

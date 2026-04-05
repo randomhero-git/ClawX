@@ -169,9 +169,25 @@ function App() {
     const themes = ['hero', 'zero'];
     const root = window.document.documentElement;
 
+    const bgUrl = (persona: string) => {
+      const base = window.electron.resourcesPath;
+      return base
+        ? `url('file://${base}/personas/${persona}/background.png')`
+        : `url('/resources/personas/${persona}/background.png')`;
+    };
+
+    const applyBg = (persona: string) => {
+      root.style.backgroundImage = bgUrl(persona);
+      root.style.backgroundSize = 'cover';
+      root.style.backgroundPosition = 'center';
+      root.style.backgroundRepeat = 'no-repeat';
+      root.style.backgroundAttachment = 'fixed';
+    };
+
     // Set random initial theme on mount
     const initial = themes[Math.floor(Math.random() * themes.length)];
     root.setAttribute('data-theme', initial);
+    applyBg(initial);
 
     // Schedule random rotation between 2 and 120 minutes
     function scheduleRotation() {
@@ -181,7 +197,9 @@ function App() {
 
       return setTimeout(() => {
         const current = root.getAttribute('data-theme');
-        root.setAttribute('data-theme', current === 'hero' ? 'zero' : 'hero');
+        const next = current === 'hero' ? 'zero' : 'hero';
+        root.setAttribute('data-theme', next);
+        applyBg(next);
         scheduleRotation();
       }, delay);
     }

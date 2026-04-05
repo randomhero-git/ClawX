@@ -263,6 +263,13 @@ const electronAPI = {
   platform: process.platform,
 
   /**
+   * Path to extraResources directory
+   */
+  resourcesPath: process.env.VITE_DEV_SERVER_URL
+    ? ''
+    : process.resourcesPath + '/resources',
+
+  /**
    * Check if running in development
    */
   isDev: process.env.NODE_ENV === 'development' || !!process.env.VITE_DEV_SERVER_URL,

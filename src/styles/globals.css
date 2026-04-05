@@ -61,11 +61,6 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-    background-image: var(--theme-bg-image);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     transition: background-color 2s ease, color 1s ease;
   }
 }
@@ -189,7 +184,6 @@
   --sidebar-accent-foreground: 24 95% 53%;
   --surface: 24 20% 8%;
   --surface-muted: 24 15% 6%;
-  --theme-bg-image: url('../../../resources/personas/hero/background.png');
 }
 
 [data-theme="zero"] {
@@ -204,5 +198,4 @@
   --sidebar-accent-foreground: 102 73% 45%;
   --surface: 142 20% 8%;
   --surface-muted: 142 15% 6%;
-  --theme-bg-image: url('../../../resources/personas/zero/background.png');
 }
