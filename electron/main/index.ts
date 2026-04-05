@@ -2,9 +2,10 @@
  * Electron Main Process Entry
  * Manages window creation, system tray, and IPC handlers
  */
-import { app, BrowserWindow, net, nativeImage, protocol, session, shell } from 'electron';
+import { app, BrowserWindow, nativeImage, protocol, session, shell } from 'electron';
 import type { Server } from 'node:http';
-import { join, normalize } from 'path';
+import { join } from 'path';
+import { readFile } from 'fs/promises';
 import { GatewayManager } from '../gateway/manager';
 import { registerIpcHandlers } from './ipc-handlers';
 import { createTray } from './tray';
@@ -75,6 +76,16 @@ app.disableHardwareAcceleration();
 if (process.platform === 'linux') {
   app.setDesktopName('clawx.desktop');
 }
+
+protocol.registerSchemesAsPrivileged([{
+  scheme: 'clawx-asset',
+  privileges: {
+    bypassCSP: true,
+    stream: true,
+    supportFetchAPI: true,
+    corsEnabled: true
+  }
+}]);
 
 // Prevent multiple instances of the app from running simultaneously.
 // Without this, two instances each spawn their own gateway process on the
@@ -283,7 +294,19 @@ async function initialize(): Promise<void> {
   protocol.handle('clawx-asset', async (request) => {
     const url = request.url.slice('clawx-asset://'.length);
     const decodedPath = decodeURIComponent(url);
-    return net.fetch('file:///' + decodedPath);
+    const normalizedPath = decodedPath.replace(/\//g, '\\');
+    try {
+      const data = await readFile(normalizedPath);
+      const ext = normalizedPath.split('.').pop();
+      const mime = ext === 'png' ? 'image/png' :
+                   ext === 'jpg' ? 'image/jpeg' :
+                   'application/octet-stream';
+      return new Response(data, {
+        headers: { 'content-type': mime }
+      });
+    } catch (e) {
+      return new Response('Not found', { status: 404 });
+    }
   });
   logger.debug(
     `Runtime: platform=${process.platform}/${process.arch}, electron=${process.versions.electron}, node=${process.versions.node}, packaged=${app.isPackaged}, pid=${process.pid}, ppid=${process.ppid}`
