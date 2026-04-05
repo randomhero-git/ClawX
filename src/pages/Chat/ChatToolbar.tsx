@@ -37,7 +37,7 @@ export function ChatToolbar() {
   const personaImg = (path: string) => {
     const base = window.electron.resourcesPath;
     return base
-      ? `file://${base}/personas/${path}`
+      ? `file://${base}/resources/personas/${path}`
       : `/resources/personas/${path}`;
   };
 

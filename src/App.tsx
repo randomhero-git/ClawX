@@ -171,13 +171,17 @@ function App() {
 
     const bgUrl = (persona: string) => {
       const base = window.electron.resourcesPath;
-      return base
-        ? `url('file://${base}/personas/${persona}/background.png')`
+      console.log('[BG-DEBUG] resourcesPath:', base);
+      const url = base
+        ? `url('file://${base}/resources/personas/${persona}/background.png')`
         : `url('/resources/personas/${persona}/background.png')`;
+      console.log('[BG-DEBUG] constructed URL:', url);
+      return url;
     };
 
     const applyBg = (persona: string) => {
       root.style.backgroundImage = bgUrl(persona);
+      console.log('[BG-DEBUG] style.backgroundImage after set:', root.style.backgroundImage);
       root.style.backgroundSize = 'cover';
       root.style.backgroundPosition = 'center';
       root.style.backgroundRepeat = 'no-repeat';

@@ -267,7 +267,7 @@ const electronAPI = {
    */
   resourcesPath: process.env.VITE_DEV_SERVER_URL
     ? ''
-    : process.resourcesPath.replace(/\\/g, '/') + '/resources',
+    : process.resourcesPath.replace(/\\/g, '/'),
 
   /**
    * Check if running in development
