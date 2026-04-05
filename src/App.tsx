@@ -45,32 +45,7 @@ class ErrorBoundary extends Component<
 
   render() {
     if (this.state.hasError) {
-      // Hero/Zero theme rotation
-  useEffect(() => {
-    const themes = ['hero', 'zero'];
-    const root = window.document.documentElement;
-
-    // Set random initial theme on mount
-    const initial = themes[Math.floor(Math.random() * themes.length)];
-    root.setAttribute('data-theme', initial);
-
-    // Schedule random rotation between 2 and 120 minutes
-    function scheduleRotation() {
-      const minMs = 2 * 60 * 1000;
-      const maxMs = 120 * 60 * 1000;
-      const delay = Math.random() * (maxMs - minMs) + minMs;
-
-      return setTimeout(() => {
-        const current = root.getAttribute('data-theme');
-        root.setAttribute('data-theme', current === 'hero' ? 'zero' : 'hero');
-        scheduleRotation();
-      }, delay);
-    }
-
-    const timer = scheduleRotation();
-    return () => clearTimeout(timer);
-  }, []);
-  return (
+      return (
         <div style={{
           padding: '40px',
           color: '#f87171',
@@ -163,32 +138,7 @@ function App() {
 
     const unsubscribe = window.electron.ipcRenderer.on('navigate', handleNavigate);
 
-    // Hero/Zero theme rotation
-  useEffect(() => {
-    const themes = ['hero', 'zero'];
-    const root = window.document.documentElement;
-
-    // Set random initial theme on mount
-    const initial = themes[Math.floor(Math.random() * themes.length)];
-    root.setAttribute('data-theme', initial);
-
-    // Schedule random rotation between 2 and 120 minutes
-    function scheduleRotation() {
-      const minMs = 2 * 60 * 1000;
-      const maxMs = 120 * 60 * 1000;
-      const delay = Math.random() * (maxMs - minMs) + minMs;
-
-      return setTimeout(() => {
-        const current = root.getAttribute('data-theme');
-        root.setAttribute('data-theme', current === 'hero' ? 'zero' : 'hero');
-        scheduleRotation();
-      }, delay);
-    }
-
-    const timer = scheduleRotation();
-    return () => clearTimeout(timer);
-  }, []);
-  return () => {
+    return () => {
       if (typeof unsubscribe === 'function') {
         unsubscribe();
       }
