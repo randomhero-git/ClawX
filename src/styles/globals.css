@@ -178,13 +178,13 @@
 }
 
 [data-theme="zero"] {
-  --primary: 142 70% 45%;
+  --primary: 102 73% 45%;
   --primary-foreground: 0 0% 0%;
-  --accent: 142 70% 45%;
+  --accent: 102 73% 45%;
   --accent-foreground: 0 0% 0%;
-  --ring: 142 70% 45%;
+  --ring: 102 73% 45%;
   --background: 0 0% 4%;
   --foreground: 0 0% 95%;
-  --sidebar-accent: 142 50% 15%;
-  --sidebar-accent-foreground: 142 70% 45%;
+  --sidebar-accent: 102 73% 11%;
+  --sidebar-accent-foreground: 102 73% 45%;
 }
