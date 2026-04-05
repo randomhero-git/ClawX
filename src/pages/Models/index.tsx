@@ -307,22 +307,22 @@ export function Models() {
             </h2>
             <div>
               {usageLoading ? (
-                <div className="flex items-center justify-center py-12 text-muted-foreground bg-black/5 dark:bg-white/5 rounded-3xl border border-transparent border-dashed">
+                <div className="flex items-center justify-center py-12 text-muted-foreground bg-primary/5 rounded-3xl border border-transparent border-dashed">
                   <FeedbackState state="loading" title={t('dashboard:recentTokenHistory.loading')} />
                 </div>
               ) : visibleUsageHistory.length === 0 ? (
-                <div className="flex items-center justify-center py-12 text-muted-foreground bg-black/5 dark:bg-white/5 rounded-3xl border border-transparent border-dashed">
+                <div className="flex items-center justify-center py-12 text-muted-foreground bg-primary/5 rounded-3xl border border-transparent border-dashed">
                   <FeedbackState state="empty" title={t('dashboard:recentTokenHistory.empty')} />
                 </div>
               ) : filteredUsageHistory.length === 0 ? (
-                <div className="flex items-center justify-center py-12 text-muted-foreground bg-black/5 dark:bg-white/5 rounded-3xl border border-transparent border-dashed">
+                <div className="flex items-center justify-center py-12 text-muted-foreground bg-primary/5 rounded-3xl border border-transparent border-dashed">
                   <FeedbackState state="empty" title={t('dashboard:recentTokenHistory.emptyForWindow')} />
                 </div>
               ) : (
                 <div className="space-y-6">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex flex-wrap items-center gap-3">
-                      <div className="flex rounded-xl bg-transparent p-1 border border-black/10 dark:border-white/10">
+                      <div className="flex rounded-xl bg-transparent p-1 border border-primary/10">
                         <Button
                           variant={usageGroupBy === 'model' ? 'secondary' : 'ghost'}
                           size="sm"
@@ -330,7 +330,7 @@ export function Models() {
                             setUsageGroupBy('model');
                             setUsagePage(1);
                           }}
-                          className={usageGroupBy === 'model' ? "rounded-lg bg-black/5 dark:bg-white/10 text-foreground" : "rounded-lg text-muted-foreground"}
+                          className={usageGroupBy === 'model' ? "rounded-lg bg-primary/10 text-foreground" : "rounded-lg text-muted-foreground"}
                         >
                           {t('dashboard:recentTokenHistory.groupByModel')}
                         </Button>
@@ -341,12 +341,12 @@ export function Models() {
                             setUsageGroupBy('day');
                             setUsagePage(1);
                           }}
-                          className={usageGroupBy === 'day' ? "rounded-lg bg-black/5 dark:bg-white/10 text-foreground" : "rounded-lg text-muted-foreground"}
+                          className={usageGroupBy === 'day' ? "rounded-lg bg-primary/10 text-foreground" : "rounded-lg text-muted-foreground"}
                         >
                           {t('dashboard:recentTokenHistory.groupByTime')}
                         </Button>
                       </div>
-                      <div className="flex rounded-xl bg-transparent p-1 border border-black/10 dark:border-white/10">
+                      <div className="flex rounded-xl bg-transparent p-1 border border-primary/10">
                         <Button
                           variant={usageWindow === '7d' ? 'secondary' : 'ghost'}
                           size="sm"
@@ -354,7 +354,7 @@ export function Models() {
                             setUsageWindow('7d');
                             setUsagePage(1);
                           }}
-                          className={usageWindow === '7d' ? "rounded-lg bg-black/5 dark:bg-white/10 text-foreground" : "rounded-lg text-muted-foreground"}
+                          className={usageWindow === '7d' ? "rounded-lg bg-primary/10 text-foreground" : "rounded-lg text-muted-foreground"}
                         >
                           {t('dashboard:recentTokenHistory.last7Days')}
                         </Button>
@@ -365,7 +365,7 @@ export function Models() {
                             setUsageWindow('30d');
                             setUsagePage(1);
                           }}
-                          className={usageWindow === '30d' ? "rounded-lg bg-black/5 dark:bg-white/10 text-foreground" : "rounded-lg text-muted-foreground"}
+                          className={usageWindow === '30d' ? "rounded-lg bg-primary/10 text-foreground" : "rounded-lg text-muted-foreground"}
                         >
                           {t('dashboard:recentTokenHistory.last30Days')}
                         </Button>
@@ -376,7 +376,7 @@ export function Models() {
                             setUsageWindow('all');
                             setUsagePage(1);
                           }}
-                          className={usageWindow === 'all' ? "rounded-lg bg-black/5 dark:bg-white/10 text-foreground" : "rounded-lg text-muted-foreground"}
+                          className={usageWindow === 'all' ? "rounded-lg bg-primary/10 text-foreground" : "rounded-lg text-muted-foreground"}
                         >
                           {t('dashboard:recentTokenHistory.allTime')}
                         </Button>
@@ -403,7 +403,7 @@ export function Models() {
                       <div
                         key={`${entry.sessionId}-${entry.timestamp}`}
                         data-testid="token-usage-entry"
-                        className="rounded-2xl bg-transparent border border-black/10 dark:border-white/10 p-5 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                        className="rounded-2xl bg-transparent border border-primary/10 p-5 hover:bg-primary/5 transition-colors"
                       >
                         <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
@@ -453,13 +453,13 @@ export function Models() {
                             </span>
                           )}
                           {typeof entry.costUsd === 'number' && Number.isFinite(entry.costUsd) && (
-                            <span className="flex items-center gap-1.5 ml-auto text-foreground/80 bg-black/5 dark:bg-white/5 px-2 py-0.5 rounded-md">{t('dashboard:recentTokenHistory.cost', { amount: entry.costUsd.toFixed(4) })}</span>
+                            <span className="flex items-center gap-1.5 ml-auto text-foreground/80 bg-primary/5 px-2 py-0.5 rounded-md">{t('dashboard:recentTokenHistory.cost', { amount: entry.costUsd.toFixed(4) })}</span>
                           )}
                           {devModeUnlocked && entry.content && (
                             <Button
                               variant="outline"
                               size="sm"
-                              className="h-6 rounded-full px-2.5 text-[11.5px] border-black/10 dark:border-white/10"
+                              className="h-6 rounded-full px-2.5 text-[11.5px] border-primary/10"
                               onClick={() => setSelectedUsageEntry(entry)}
                             >
                               {t('dashboard:recentTokenHistory.viewContent')}
@@ -480,7 +480,7 @@ export function Models() {
                         size="sm"
                         onClick={() => setUsagePage((page) => Math.max(1, page - 1))}
                         disabled={safeUsagePage <= 1}
-                        className="rounded-full px-4 h-9 border-black/10 dark:border-white/10 bg-transparent hover:bg-black/5 dark:hover:bg-white/5"
+                        className="rounded-full px-4 h-9 border-primary/10 bg-transparent hover:bg-primary/5"
                       >
                         <ChevronLeft className="h-4 w-4 mr-1" />
                         {t('dashboard:recentTokenHistory.prev')}
@@ -490,7 +490,7 @@ export function Models() {
                         size="sm"
                         onClick={() => setUsagePage((page) => Math.min(usageTotalPages, page + 1))}
                         disabled={safeUsagePage >= usageTotalPages}
-                        className="rounded-full px-4 h-9 border-black/10 dark:border-white/10 bg-transparent hover:bg-black/5 dark:hover:bg-white/5"
+                        className="rounded-full px-4 h-9 border-primary/10 bg-transparent hover:bg-primary/5"
                       >
                         {t('dashboard:recentTokenHistory.next')}
                         <ChevronRight className="h-4 w-4 ml-1" />
@@ -567,7 +567,7 @@ function UsageBarChart({
 }) {
   if (groups.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-black/10 dark:border-white/10 p-8 text-center text-[14px] font-medium text-muted-foreground">
+      <div className="rounded-2xl border border-dashed border-primary/10 p-8 text-center text-[14px] font-medium text-muted-foreground">
         {emptyLabel}
       </div>
     );
@@ -576,7 +576,7 @@ function UsageBarChart({
   const maxTokens = Math.max(...groups.map((group) => group.totalTokens), 1);
 
   return (
-    <div className="space-y-4 bg-transparent p-5 rounded-2xl border border-black/10 dark:border-white/10">
+    <div className="space-y-4 bg-transparent p-5 rounded-2xl border border-primary/10">
       <div className="flex flex-wrap gap-4 text-[13px] font-medium text-muted-foreground mb-2">
         <span className="inline-flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-full bg-sky-500" />
@@ -599,7 +599,7 @@ function UsageBarChart({
               {totalLabel}: {formatTokenCount(group.totalTokens)}
             </span>
           </div>
-          <div className="h-3.5 overflow-hidden rounded-full bg-black/5 dark:bg-white/5">
+          <div className="h-3.5 overflow-hidden rounded-full bg-primary/5">
             <div
               className="flex h-full overflow-hidden rounded-full"
               style={{
@@ -651,8 +651,8 @@ function UsageContentPopup({
 }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4" role="dialog" aria-modal="true">
-      <div className="w-full max-w-3xl rounded-2xl border border-black/10 dark:border-white/10 bg-background shadow-xl">
-        <div className="flex items-start justify-between gap-3 border-b border-black/10 dark:border-white/10 px-5 py-4">
+      <div className="w-full max-w-3xl rounded-2xl border border-primary/10 bg-background shadow-xl">
+        <div className="flex items-start justify-between gap-3 border-b border-primary/10 px-5 py-4">
           <div className="min-w-0">
             <p className="text-sm font-semibold text-foreground">{title}</p>
             <p className="text-xs text-muted-foreground truncate mt-0.5">
@@ -674,7 +674,7 @@ function UsageContentPopup({
             {entry.content}
           </pre>
         </div>
-        <div className="flex justify-end border-t border-black/10 dark:border-white/10 px-5 py-3">
+        <div className="flex justify-end border-t border-primary/10 px-5 py-3">
           <Button variant="outline" onClick={onClose}>
             {closeLabel}
           </Button>

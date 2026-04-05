@@ -192,7 +192,7 @@ export function Agents() {
             <Button
               variant="outline"
               onClick={handleRefresh}
-              className="h-9 text-[13px] font-medium rounded-full px-4 border-black/10 dark:border-white/10 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 shadow-none text-foreground/80 hover:text-foreground transition-colors"
+              className="h-9 text-[13px] font-medium rounded-full px-4 border-primary/10 bg-transparent hover:bg-primary/5 shadow-none text-foreground/80 hover:text-foreground transition-colors"
             >
               <RefreshCw className={cn('h-3.5 w-3.5 mr-2', isUsingStableValue && 'animate-spin')} />
               {t('refresh')}
@@ -317,7 +317,7 @@ function AgentCard({
   return (
     <div
       className={cn(
-        'group flex items-start gap-4 p-4 rounded-2xl transition-all text-left border relative overflow-hidden bg-transparent border-transparent hover:bg-black/5 dark:hover:bg-white/5',
+        'group flex items-start gap-4 p-4 rounded-2xl transition-all text-left border relative overflow-hidden bg-transparent border-transparent hover:bg-primary/5',
         agent.isDefault && 'bg-black/[0.04] dark:bg-white/[0.06]'
       )}
     >
@@ -354,7 +354,7 @@ function AgentCard({
               variant="ghost"
               size="icon"
               className={cn(
-                'h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/10 transition-all',
+                'h-7 w-7 text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-all',
                 !agent.isDefault && 'opacity-0 group-hover:opacity-100',
               )}
               onClick={onOpenSettings}
@@ -378,8 +378,8 @@ function AgentCard({
   );
 }
 
-const inputClasses = 'h-[44px] rounded-xl font-mono text-[13px] bg-[hsl(var(--surface))] dark:bg-muted border-black/10 dark:border-white/10 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:border-blue-500 shadow-sm transition-all text-foreground placeholder:text-foreground/40';
-const selectClasses = 'h-[44px] w-full rounded-xl font-mono text-[13px] bg-[hsl(var(--surface))] dark:bg-muted border border-black/10 dark:border-white/10 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:border-blue-500 shadow-sm transition-all text-foreground px-3';
+const inputClasses = 'h-[44px] rounded-xl font-mono text-[13px] bg-[hsl(var(--surface))] dark:bg-muted border-primary/10 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:border-blue-500 shadow-sm transition-all text-foreground placeholder:text-foreground/40';
+const selectClasses = 'h-[44px] w-full rounded-xl font-mono text-[13px] bg-[hsl(var(--surface))] dark:bg-muted border border-primary/10 focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:border-blue-500 shadow-sm transition-all text-foreground px-3';
 const labelClasses = 'text-[14px] text-foreground/80 font-bold';
 
 function ChannelLogo({ type }: { type: ChannelType }) {
@@ -467,7 +467,7 @@ function AddAgentDialog({
             <Button
               variant="outline"
               onClick={onClose}
-              className="h-9 text-[13px] font-medium rounded-full px-4 border-black/10 dark:border-white/10 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 shadow-none text-foreground/80 hover:text-foreground"
+              className="h-9 text-[13px] font-medium rounded-full px-4 border-primary/10 bg-transparent hover:bg-primary/5 shadow-none text-foreground/80 hover:text-foreground"
             >
               {t('common:actions.cancel')}
             </Button>
@@ -565,7 +565,7 @@ function AgentSettingsModal({
             variant="ghost"
             size="icon"
             onClick={handleRequestClose}
-            className="rounded-full h-8 w-8 -mr-2 -mt-2 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5"
+            className="rounded-full h-8 w-8 -mr-2 -mt-2 text-muted-foreground hover:text-foreground hover:bg-primary/5"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -587,7 +587,7 @@ function AgentSettingsModal({
                     variant="outline"
                     onClick={() => void handleSaveName()}
                     disabled={savingName || !name.trim() || name.trim() === agent.name}
-                    className="h-[44px] text-[13px] font-medium rounded-xl px-4 border-black/10 dark:border-white/10 bg-[hsl(var(--surface))] dark:bg-muted hover:bg-black/5 dark:hover:bg-white/5 shadow-none text-foreground/80 hover:text-foreground"
+                    className="h-[44px] text-[13px] font-medium rounded-xl px-4 border-primary/10 bg-[hsl(var(--surface))] dark:bg-muted hover:bg-primary/5 shadow-none text-foreground/80 hover:text-foreground"
                   >
                     {savingName ? (
                       <RefreshCw className="h-4 w-4 animate-spin" />
@@ -600,7 +600,7 @@ function AgentSettingsModal({
             </div>
 
             <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-1 rounded-2xl bg-black/5 dark:bg-white/5 border border-transparent p-4">
+              <div className="space-y-1 rounded-2xl bg-primary/5 border border-transparent p-4">
                 <p className="text-[11px] uppercase tracking-[0.08em] text-muted-foreground/80 font-medium">
                   {t('settingsDialog.agentIdLabel')}
                 </p>
@@ -609,7 +609,7 @@ function AgentSettingsModal({
               <button
                 type="button"
                 onClick={() => setShowModelModal(true)}
-                className="space-y-1 rounded-2xl bg-black/5 dark:bg-white/5 border border-transparent p-4 text-left hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                className="space-y-1 rounded-2xl bg-primary/5 border border-transparent p-4 text-left hover:bg-primary/10 transition-colors"
               >
                 <p className="text-[11px] uppercase tracking-[0.08em] text-muted-foreground/80 font-medium">
                   {t('settingsDialog.modelLabel')}
@@ -636,15 +636,15 @@ function AgentSettingsModal({
             </div>
 
             {assignedChannels.length === 0 && agent.channelTypes.length === 0 ? (
-              <div className="rounded-2xl border border-dashed border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-4 text-[13.5px] text-muted-foreground">
+              <div className="rounded-2xl border border-dashed border-primary/10 bg-primary/5 p-4 text-[13.5px] text-muted-foreground">
                 {t('settingsDialog.noChannels')}
               </div>
             ) : (
               <div className="space-y-3">
                 {assignedChannels.map((channel) => (
-                  <div key={`${channel.channelType}-${channel.accountId}`} className="flex items-center justify-between rounded-2xl bg-black/5 dark:bg-white/5 border border-transparent p-4">
+                  <div key={`${channel.channelType}-${channel.accountId}`} className="flex items-center justify-between rounded-2xl bg-primary/5 border border-transparent p-4">
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="h-[40px] w-[40px] shrink-0 flex items-center justify-center text-foreground bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-full shadow-sm">
+                      <div className="h-[40px] w-[40px] shrink-0 flex items-center justify-center text-foreground bg-primary/5 border border-primary/10 rounded-full shadow-sm">
                         <ChannelLogo type={channel.channelType} />
                       </div>
                       <div className="min-w-0">
@@ -661,7 +661,7 @@ function AgentSettingsModal({
                   </div>
                 ))}
                 {assignedChannels.length === 0 && agent.channelTypes.length > 0 && (
-                  <div className="rounded-2xl border border-dashed border-black/10 dark:border-white/10 bg-black/5 dark:bg-white/5 p-4 text-[13.5px] text-muted-foreground">
+                  <div className="rounded-2xl border border-dashed border-primary/10 bg-primary/5 p-4 text-[13.5px] text-muted-foreground">
                     {t('settingsDialog.channelsManagedInChannels')}
                   </div>
                 )}
@@ -840,7 +840,7 @@ function AgentModelModal({
             variant="ghost"
             size="icon"
             onClick={handleRequestClose}
-            className="rounded-full h-8 w-8 -mr-2 -mt-2 text-muted-foreground hover:text-foreground hover:bg-black/5 dark:hover:bg-white/5"
+            className="rounded-full h-8 w-8 -mr-2 -mt-2 text-muted-foreground hover:text-foreground hover:bg-primary/5"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -894,14 +894,14 @@ function AgentModelModal({
               variant="outline"
               onClick={handleUseDefaultModel}
               disabled={savingModel || !normalizedDefaultModelRef || isUsingDefaultModelInForm}
-              className="h-9 text-[13px] font-medium rounded-full px-4 border-black/10 dark:border-white/10 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 shadow-none text-foreground/80 hover:text-foreground"
+              className="h-9 text-[13px] font-medium rounded-full px-4 border-primary/10 bg-transparent hover:bg-primary/5 shadow-none text-foreground/80 hover:text-foreground"
             >
               {t('settingsDialog.useDefaultModel')}
             </Button>
             <Button
               variant="outline"
               onClick={handleRequestClose}
-              className="h-9 text-[13px] font-medium rounded-full px-4 border-black/10 dark:border-white/10 bg-transparent hover:bg-black/5 dark:hover:bg-white/5 shadow-none text-foreground/80 hover:text-foreground"
+              className="h-9 text-[13px] font-medium rounded-full px-4 border-primary/10 bg-transparent hover:bg-primary/5 shadow-none text-foreground/80 hover:text-foreground"
             >
               {t('common:actions.cancel')}
             </Button>

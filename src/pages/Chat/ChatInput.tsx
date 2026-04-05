@@ -408,7 +408,7 @@ export function ChatInput({ onSend, onStop, disabled = false, sending = false, i
         )}
 
         {/* Input Row */}
-        <div className={`relative bg-white dark:bg-card rounded-[28px] shadow-sm border p-1.5 transition-all ${dragOver ? 'border-primary ring-1 ring-primary' : 'border-black/10 dark:border-white/10'}`}>
+        <div className={`relative bg-white dark:bg-card rounded-[28px] shadow-sm border p-1.5 transition-all ${dragOver ? 'border-primary ring-1 ring-primary' : 'border-primary/10'}`}>
           {selectedTarget && (
             <div className="px-2.5 pt-2 pb-1">
               <button
@@ -428,7 +428,7 @@ export function ChatInput({ onSend, onStop, disabled = false, sending = false, i
             <Button
               variant="ghost"
               size="icon"
-              className="shrink-0 h-10 w-10 rounded-full text-muted-foreground hover:bg-black/5 dark:hover:bg-white/10 hover:text-foreground transition-colors"
+              className="shrink-0 h-10 w-10 rounded-full text-muted-foreground hover:bg-primary/10 hover:text-foreground transition-colors"
               onClick={pickFiles}
               disabled={disabled || sending}
               title={t('composer.attachFiles')}
@@ -442,7 +442,7 @@ export function ChatInput({ onSend, onStop, disabled = false, sending = false, i
                   variant="ghost"
                   size="icon"
                   className={cn(
-                    'h-10 w-10 rounded-full text-muted-foreground hover:bg-black/5 dark:hover:bg-white/10 hover:text-foreground transition-colors',
+                    'h-10 w-10 rounded-full text-muted-foreground hover:bg-primary/10 hover:text-foreground transition-colors',
                     (pickerOpen || selectedTarget) && 'bg-primary/10 text-primary hover:bg-primary/20'
                   )}
                   onClick={() => setPickerOpen((open) => !open)}
@@ -452,7 +452,7 @@ export function ChatInput({ onSend, onStop, disabled = false, sending = false, i
                   <AtSign className="h-4 w-4" />
                 </Button>
                 {pickerOpen && (
-                  <div className="absolute left-0 bottom-full z-20 mb-2 w-72 overflow-hidden rounded-2xl border border-black/10 bg-white p-1.5 shadow-xl dark:border-white/10 dark:bg-card">
+                  <div className="absolute left-0 bottom-full z-20 mb-2 w-72 overflow-hidden rounded-2xl border border-primary/10 bg-white p-1.5 shadow-xl dark:bg-card">
                     <div className="px-3 py-2 text-[11px] font-medium text-muted-foreground/80">
                       {t('composer.agentPickerTitle', { currentAgent: currentAgentName })}
                     </div>
@@ -503,7 +503,7 @@ export function ChatInput({ onSend, onStop, disabled = false, sending = false, i
               size="icon"
               className={`shrink-0 h-10 w-10 rounded-full transition-colors ${
                 (sending || canSend)
-                  ? 'bg-black/5 dark:bg-white/10 text-foreground hover:bg-black/10 dark:hover:bg-white/20'
+                  ? 'bg-primary/10 text-foreground hover:bg-primary/20'
                   : 'text-muted-foreground/50 hover:bg-transparent bg-transparent'
               }`}
               variant="ghost"
@@ -624,7 +624,7 @@ function AgentPickerItem({
       onClick={onSelect}
       className={cn(
         'flex w-full flex-col items-start rounded-xl px-3 py-2 text-left transition-colors',
-        selected ? 'bg-primary/10 text-foreground' : 'hover:bg-black/5 dark:hover:bg-white/5'
+        selected ? 'bg-primary/10 text-foreground' : 'hover:bg-primary/5'
       )}
     >
       <span className="text-[14px] font-medium text-foreground">{agent.name}</span>

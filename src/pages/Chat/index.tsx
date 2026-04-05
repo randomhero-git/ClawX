@@ -206,7 +206,7 @@ function WelcomeScreen() {
         {quickActions.map(({ key, label }) => (
           <button 
             key={key}
-            className="px-4 py-1.5 rounded-full border border-black/10 dark:border-white/10 text-[13px] font-medium text-foreground/70 hover:bg-black/5 dark:hover:bg-white/5 transition-colors bg-black/[0.02]"
+            className="px-4 py-1.5 rounded-full border border-primary/10 text-[13px] font-medium text-foreground/70 hover:bg-primary/5 transition-colors bg-black/[0.02]"
           >
             {label}
           </button>
@@ -221,10 +221,10 @@ function WelcomeScreen() {
 function TypingIndicator() {
   return (
     <div className="flex gap-3">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full mt-1 bg-black/5 dark:bg-white/5 text-foreground">
+      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full mt-1 bg-primary/5 text-foreground">
         <Sparkles className="h-4 w-4" />
       </div>
-      <div className="bg-black/5 dark:bg-white/5 text-foreground rounded-2xl px-4 py-3">
+      <div className="bg-primary/5 text-foreground rounded-2xl px-4 py-3">
         <div className="flex gap-1">
           <span className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
           <span className="w-2 h-2 bg-muted-foreground/50 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -241,10 +241,10 @@ function ActivityIndicator({ phase }: { phase: 'tool_processing' }) {
   void phase;
   return (
     <div className="flex gap-3">
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full mt-1 bg-black/5 dark:bg-white/5 text-foreground">
+      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full mt-1 bg-primary/5 text-foreground">
         <Sparkles className="h-4 w-4" />
       </div>
-      <div className="bg-black/5 dark:bg-white/5 text-foreground rounded-2xl px-4 py-3">
+      <div className="bg-primary/5 text-foreground rounded-2xl px-4 py-3">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Loader2 className="h-3.5 w-3.5 animate-spin text-primary" />
           <span>Processing tool results…</span>

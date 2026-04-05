@@ -63,9 +63,9 @@ function NavItem({ to, icon, label, badge, collapsed, onClick, testId }: NavItem
       className={({ isActive }) =>
         cn(
           'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors',
-          'hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80',
+          'hover:bg-primary/5 text-foreground/80',
           isActive
-            ? 'bg-black/5 dark:bg-white/10 text-foreground'
+            ? 'bg-primary/10 text-foreground'
             : '',
           collapsed && 'justify-center px-0'
         )
@@ -242,7 +242,7 @@ export function Sidebar() {
         <Button
           variant="ghost"
           size="icon"
-          className="h-8 w-8 shrink-0 text-muted-foreground hover:bg-black/5 dark:hover:bg-white/10"
+          className="h-8 w-8 shrink-0 text-muted-foreground hover:bg-primary/10"
           onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
         >
           {sidebarCollapsed ? (
@@ -264,7 +264,7 @@ export function Sidebar() {
           }}
           className={cn(
             'flex w-full items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors mb-2',
-            'bg-black/5 dark:bg-accent shadow-none border border-transparent text-foreground',
+            'bg-primary/5 dark:bg-accent shadow-none border border-transparent text-foreground',
             sidebarCollapsed && 'justify-center px-0',
           )}
         >
@@ -301,9 +301,9 @@ export function Sidebar() {
                         onClick={() => { switchSession(s.key); navigate('/'); }}
                         className={cn(
                           'w-full text-left rounded-lg px-2.5 py-1.5 text-[13px] transition-colors pr-7',
-                          'hover:bg-black/5 dark:hover:bg-white/5',
+                          'hover:bg-primary/5',
                           isOnChat && currentSessionKey === s.key
-                            ? 'bg-black/5 dark:bg-white/10 text-foreground font-medium'
+                            ? 'bg-primary/10 text-foreground font-medium'
                             : 'text-foreground/75',
                         )}
                       >
@@ -350,7 +350,7 @@ export function Sidebar() {
                 'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full',
                 gamingMode
                   ? 'bg-primary text-primary-foreground'
-                  : 'hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80'
+                  : 'hover:bg-primary/5 text-foreground/80'
               )}
             >
               <Gamepad2 className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
@@ -359,7 +359,7 @@ export function Sidebar() {
 
             <button
               onClick={() => window.electron.openExternal('crush')}
-              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80"
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-foreground/80"
             >
               <Zap className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
               <span className="flex-1 text-left">Crush</span>
@@ -367,7 +367,7 @@ export function Sidebar() {
 
             <button
               onClick={() => window.electron.openExternal('https://10.0.0.58:8006')}
-              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80"
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-foreground/80"
             >
               <Server className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
               <span className="flex-1 text-left">Proxmox</span>
@@ -375,7 +375,7 @@ export function Sidebar() {
 
             <button
               onClick={() => window.electron.openExternal('http://10.0.0.18:8080')}
-              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80"
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-foreground/80"
             >
               <Layout className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
               <span className="flex-1 text-left">Alfred UI</span>
@@ -383,7 +383,7 @@ export function Sidebar() {
 
             <button
               onClick={() => window.electron.openExternal('rustdesk')}
-              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80"
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-foreground/80"
             >
               <Monitor className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
               <span className="flex-1 text-left">RustDesk</span>
@@ -397,8 +397,8 @@ export function Sidebar() {
             className={({ isActive }) =>
               cn(
                 'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors',
-                'hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80',
-                isActive && 'bg-black/5 dark:bg-white/10 text-foreground',
+                'hover:bg-primary/5 text-foreground/80',
+                isActive && 'bg-primary/10 text-foreground',
                 sidebarCollapsed ? 'justify-center px-0' : ''
               )
             }
@@ -418,7 +418,7 @@ export function Sidebar() {
           variant="ghost"
           className={cn(
             'flex items-center gap-2.5 rounded-lg px-2.5 py-2 h-auto text-[14px] font-medium transition-colors w-full mt-1',
-            'hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80',
+            'hover:bg-primary/5 text-foreground/80',
             sidebarCollapsed ? 'justify-center px-0' : 'justify-start'
           )}
           onClick={openDevConsole}
