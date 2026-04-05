@@ -3,8 +3,8 @@
  * Session selector, new session, refresh, and thinking toggle.
  * Rendered in the Header when on the Chat page.
  */
-import { useMemo } from 'react';
-import { RefreshCw, Brain, Bot } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { RefreshCw, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useChatStore } from '@/stores/chat';
@@ -20,6 +20,15 @@ export function ChatToolbar() {
   const currentAgentId = useChatStore((s) => s.currentAgentId);
   const agents = useAgentsStore((s) => s.agents);
   const { t } = useTranslation('chat');
+  const [theme, setTheme] = useState(() => document.documentElement.getAttribute('data-theme') ?? 'hero');
+  useEffect(() => {
+    const root = document.documentElement;
+    const observer = new MutationObserver(() => {
+      setTheme(root.getAttribute('data-theme') ?? 'hero');
+    });
+    observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
   const currentAgentName = useMemo(
     () => (agents ?? []).find((agent) => agent.id === currentAgentId)?.name ?? currentAgentId,
     [agents, currentAgentId],
@@ -28,7 +37,14 @@ export function ChatToolbar() {
   return (
     <div className="flex items-center gap-2">
       <div className="hidden sm:flex items-center gap-1.5 rounded-full border border-primary/10 bg-white/70 px-3 py-1.5 text-[12px] font-medium text-foreground/80 dark:bg-primary/5">
-        <Bot className="h-3.5 w-3.5 text-primary" />
+        <img
+          src={theme === 'hero'
+            ? '/resources/personas/hero/icon.png'
+            : '/resources/personas/zero/icon.png'
+          }
+          alt={theme === 'hero' ? 'Hero' : 'Zero'}
+          className="h-5 w-5 rounded-full object-cover shrink-0"
+        />
         <span>{t('toolbar.currentAgent', { agent: currentAgentName })}</span>
       </div>
       {/* Refresh */}
