@@ -225,7 +225,7 @@ export function Sidebar() {
     <aside
       data-testid="sidebar"
       className={cn(
-        'flex shrink-0 flex-col border-r bg-background transition-all duration-300',
+        'flex shrink-0 flex-col border-r bg-background/80 transition-all duration-300',
         sidebarCollapsed ? 'w-16' : 'w-64'
       )}
     >
