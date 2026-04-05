@@ -79,7 +79,7 @@ if (process.platform === 'linux') {
 // Register custom protocol scheme for persona assets (must be before app.whenReady)
 protocol.registerSchemesAsPrivileged([{
   scheme: 'clawx-asset',
-  privileges: { bypassCSP: true, supportFetchAPI: true }
+  privileges: { standard: true, bypassCSP: true, supportFetchAPI: true }
 }]);
 
 // Prevent multiple instances of the app from running simultaneously.
@@ -287,10 +287,10 @@ async function initialize(): Promise<void> {
 
   // Register custom protocol handler for serving persona assets from extraResources
   protocol.handle('clawx-asset', (request) => {
-    const filePath = request.url.replace('clawx-asset://', '');
-    const decodedPath = decodeURIComponent(filePath);
+    const parsed = new URL(request.url);
+    const filePath = decodeURIComponent(parsed.host + parsed.pathname);
     const { net } = require('electron') as typeof import('electron');
-    return net.fetch('file:///' + decodedPath);
+    return net.fetch('file:///' + filePath);
   });
   logger.debug(
     `Runtime: platform=${process.platform}/${process.arch}, electron=${process.versions.electron}, node=${process.versions.node}, packaged=${app.isPackaged}, pid=${process.pid}, ppid=${process.ppid}`
