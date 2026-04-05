@@ -355,7 +355,7 @@ export function Sidebar() {
             </button>
 
             <button
-              onClick={() => window.electron.ipcRenderer.invoke('shell:openPath', 'C:\\Users\\xdead\\AppData\\Roaming\\npm\\crush.ps1')}
+              onClick={() => window.electron.ipcRenderer.invoke('shell:spawnPowerShell', 'crush')}
               className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-foreground/80"
             >
               <Zap className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
