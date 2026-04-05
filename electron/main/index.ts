@@ -2,7 +2,7 @@
  * Electron Main Process Entry
  * Manages window creation, system tray, and IPC handlers
  */
-import { app, BrowserWindow, nativeImage, protocol, session, shell } from 'electron';
+import { app, BrowserWindow, net, nativeImage, protocol, session, shell } from 'electron';
 import type { Server } from 'node:http';
 import { join, normalize } from 'path';
 import { GatewayManager } from '../gateway/manager';
@@ -280,10 +280,10 @@ async function initialize(): Promise<void> {
   logger.info('=== ClawX Application Starting ===');
 
   // Register custom protocol handler for serving persona assets from extraResources
-  protocol.registerFileProtocol('clawx-asset', (request, callback) => {
+  protocol.handle('clawx-asset', async (request) => {
     const url = request.url.slice('clawx-asset://'.length);
     const decodedPath = decodeURIComponent(url);
-    callback({ path: normalize(decodedPath) });
+    return net.fetch('file:///' + decodedPath);
   });
   logger.debug(
     `Runtime: platform=${process.platform}/${process.arch}, electron=${process.versions.electron}, node=${process.versions.node}, packaged=${app.isPackaged}, pid=${process.pid}, ppid=${process.ppid}`
