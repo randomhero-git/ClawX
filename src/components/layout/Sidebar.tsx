@@ -18,6 +18,11 @@ import {
   ExternalLink,
   Trash2,
   Cpu,
+  Gamepad2,
+  Zap,
+  Server,
+  Layout,
+  Monitor,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/stores/settings';
@@ -115,6 +120,7 @@ function getAgentIdFromSessionKey(sessionKey: string): string {
 export function Sidebar() {
   const sidebarCollapsed = useSettingsStore((state) => state.sidebarCollapsed);
   const setSidebarCollapsed = useSettingsStore((state) => state.setSidebarCollapsed);
+  const [gamingMode, setGamingMode] = useState(false);
 
   const sessions = useChatStore((s) => s.sessions);
   const currentSessionKey = useChatStore((s) => s.currentSessionKey);
@@ -336,6 +342,55 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="p-2 mt-auto">
+        {!sidebarCollapsed && (
+          <div className="flex flex-col gap-1 mb-2">
+            <button
+              onClick={() => setGamingMode(!gamingMode)}
+              className={cn(
+                'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full',
+                gamingMode
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80'
+              )}
+            >
+              <Gamepad2 className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">Gaming Mode</span>
+            </button>
+
+            <button
+              onClick={() => window.electron.openExternal('crush')}
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80"
+            >
+              <Zap className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">Crush</span>
+            </button>
+
+            <button
+              onClick={() => window.electron.openExternal('https://10.0.0.58:8006')}
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80"
+            >
+              <Server className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">Proxmox</span>
+            </button>
+
+            <button
+              onClick={() => window.electron.openExternal('http://10.0.0.18:8080')}
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80"
+            >
+              <Layout className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">Alfred UI</span>
+            </button>
+
+            <button
+              onClick={() => window.electron.openExternal('rustdesk')}
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-black/5 dark:hover:bg-white/5 text-foreground/80"
+            >
+              <Monitor className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">RustDesk</span>
+            </button>
+          </div>
+        )}
+
         <NavLink
             to="/settings"
             data-testid="sidebar-nav-settings"
