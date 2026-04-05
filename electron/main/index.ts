@@ -4,7 +4,7 @@
  */
 import { app, BrowserWindow, nativeImage, protocol, session, shell } from 'electron';
 import type { Server } from 'node:http';
-import { join } from 'path';
+import { join, normalize } from 'path';
 import { GatewayManager } from '../gateway/manager';
 import { registerIpcHandlers } from './ipc-handlers';
 import { createTray } from './tray';
@@ -75,12 +75,6 @@ app.disableHardwareAcceleration();
 if (process.platform === 'linux') {
   app.setDesktopName('clawx.desktop');
 }
-
-// Register custom protocol scheme for persona assets (must be before app.whenReady)
-protocol.registerSchemesAsPrivileged([{
-  scheme: 'clawx-asset',
-  privileges: { standard: true, bypassCSP: true, supportFetchAPI: true }
-}]);
 
 // Prevent multiple instances of the app from running simultaneously.
 // Without this, two instances each spawn their own gateway process on the
@@ -286,11 +280,10 @@ async function initialize(): Promise<void> {
   logger.info('=== ClawX Application Starting ===');
 
   // Register custom protocol handler for serving persona assets from extraResources
-  protocol.handle('clawx-asset', (request) => {
-    const parsed = new URL(request.url);
-    const filePath = decodeURIComponent(parsed.host + parsed.pathname);
-    const { net } = require('electron') as typeof import('electron');
-    return net.fetch('file:///' + filePath);
+  protocol.registerFileProtocol('clawx-asset', (request, callback) => {
+    const url = request.url.slice('clawx-asset://'.length);
+    const decodedPath = decodeURIComponent(url);
+    callback({ path: normalize(decodedPath) });
   });
   logger.debug(
     `Runtime: platform=${process.platform}/${process.arch}, electron=${process.versions.electron}, node=${process.versions.node}, packaged=${app.isPackaged}, pid=${process.pid}, ppid=${process.ppid}`
