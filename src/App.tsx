@@ -171,11 +171,9 @@ function App() {
 
     const bgUrl = (persona: string) => {
       const base = window.electron.resourcesPath;
-      console.log('[BG-DEBUG] resourcesPath:', base);
       const url = base
-        ? `url('clawx-asset://${base}/resources/personas/${persona}/background.png')`
+        ? `url('clawx-asset://resources/personas/${persona}/background.png')`
         : `url('/resources/personas/${persona}/background.png')`;
-      console.log('[BG-DEBUG] constructed URL:', url);
       return url;
     };
 

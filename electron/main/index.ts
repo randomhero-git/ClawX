@@ -294,14 +294,10 @@ async function initialize(): Promise<void> {
   protocol.handle('clawx-asset', async (request) => {
     const url = request.url.slice('clawx-asset://'.length);
     const decodedPath = decodeURIComponent(url);
-    const normalizedPath = decodedPath.replace(/\//g, '\\');
-    console.log('[PROTOCOL-DEBUG] request.url:', request.url);
-    console.log('[PROTOCOL-DEBUG] sliced url:', url);
-    console.log('[PROTOCOL-DEBUG] normalizedPath:', normalizedPath);
+    const fullPath = join(process.resourcesPath, decodedPath);
     try {
-      const data = await readFile(normalizedPath);
-      console.log('[PROTOCOL-DEBUG] readFile SUCCESS:', normalizedPath);
-      const ext = normalizedPath.split('.').pop();
+      const data = await readFile(fullPath);
+      const ext = fullPath.split('.').pop();
       const mime = ext === 'png' ? 'image/png' :
                    ext === 'jpg' ? 'image/jpeg' :
                    'application/octet-stream';
@@ -309,7 +305,7 @@ async function initialize(): Promise<void> {
         headers: { 'content-type': mime }
       });
     } catch (e) {
-      console.log('[PROTOCOL-DEBUG] readFile FAILED:', normalizedPath, e);
+      console.log('[ASSET-DEBUG] readFile failed:', fullPath, (e as Error).message);
       return new Response('Not found', { status: 404 });
     }
   });
