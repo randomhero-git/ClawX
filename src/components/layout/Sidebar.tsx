@@ -355,7 +355,21 @@ export function Sidebar() {
             </button>
 
             <button
-              onClick={() => window.electron.ipcRenderer.invoke('shell:spawnPowerShell', 'crush')}
+              onClick={() => {
+                navigate('/');
+                setTimeout(() => {
+                  const input = document.querySelector('textarea') as HTMLTextAreaElement;
+                  if (input) {
+                    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value')?.set;
+                    nativeInputValueSetter?.call(input, 'launch Crush');
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    setTimeout(() => {
+                      const form = input.closest('form');
+                      if (form) form.requestSubmit();
+                    }, 50);
+                  }
+                }, 100);
+              }}
               className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-foreground/80"
             >
               <Zap className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
