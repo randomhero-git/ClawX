@@ -18,10 +18,11 @@ import {
   ExternalLink,
   Trash2,
   Cpu,
+  Gamepad2,
+  Zap,
+  Server,
+  Layout,
   Monitor,
-  Music,
-  Image,
-  FolderOpen,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useSettingsStore } from '@/stores/settings';
@@ -119,6 +120,7 @@ function getAgentIdFromSessionKey(sessionKey: string): string {
 export function Sidebar() {
   const sidebarCollapsed = useSettingsStore((state) => state.sidebarCollapsed);
   const setSidebarCollapsed = useSettingsStore((state) => state.setSidebarCollapsed);
+  const [gamingMode, setGamingMode] = useState(false);
 
 
   const sessions = useChatStore((s) => s.sessions);
@@ -233,8 +235,8 @@ export function Sidebar() {
         {!sidebarCollapsed && (
           <div className="flex items-center gap-2 px-2 overflow-hidden">
             <img src={window.electron.resourcesPath
-              ? `clawx-asset://resources/personas/b00/b00-banner.png`
-              : '/resources/personas/b00/b00-banner.png'
+              ? `clawx-asset://resources/personas/rand0mlabz-logo.png`
+              : '/resources/personas/rand0mlabz-logo.png'
             } alt="Rand0mLabz" className="h-[88px] w-auto" />
           </div>
         )}
@@ -344,35 +346,62 @@ export function Sidebar() {
         {!sidebarCollapsed && (
           <div className="flex flex-col gap-1 mb-2">
             <button
-              onClick={() => window.electron.openExternal('spotify:')}
-              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-primary"
+              onClick={() => setGamingMode(!gamingMode)}
+              className={cn(
+                'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full',
+                gamingMode
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover:bg-primary/5 text-primary'
+              )}
             >
-              <Music className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
-              <span className="flex-1 text-left">Spotify</span>
+              <Gamepad2 className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">Gaming Mode</span>
             </button>
 
             <button
-              onClick={() => window.electron.openExternal('https://photos.randomhero.dev')}
+              onClick={() => {
+                navigate('/');
+                setTimeout(() => {
+                  const input = document.querySelector('textarea') as HTMLTextAreaElement;
+                  if (input) {
+                    const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value')?.set;
+                    nativeInputValueSetter?.call(input, 'launch Crush');
+                    input.dispatchEvent(new Event('input', { bubbles: true }));
+                    setTimeout(() => {
+                      const form = input.closest('form');
+                      if (form) form.requestSubmit();
+                    }, 50);
+                  }
+                }, 100);
+              }}
               className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-primary"
             >
-              <Image className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
-              <span className="flex-1 text-left">Photos</span>
+              <Zap className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">Crush</span>
             </button>
 
             <button
-              onClick={() => window.electron.openExternal('https://files.randomhero.dev')}
+              onClick={() => window.electron.openExternal('https://10.0.0.58:8006')}
               className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-primary"
             >
-              <FolderOpen className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
-              <span className="flex-1 text-left">Files</span>
+              <Server className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">Proxmox</span>
             </button>
 
             <button
-              onClick={() => window.electron.openExternal('https://app.ourskylight.com')}
+              onClick={() => window.electron.openExternal('http://10.0.0.18:8080')}
+              className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-primary"
+            >
+              <Layout className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
+              <span className="flex-1 text-left">Alfred UI</span>
+            </button>
+
+            <button
+              onClick={() => window.electron.openExternal('rustdesk://')}
               className="flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-[14px] font-medium transition-colors w-full hover:bg-primary/5 text-primary"
             >
               <Monitor className="h-[18px] w-[18px] shrink-0" strokeWidth={2} />
-              <span className="flex-1 text-left">Skylight</span>
+              <span className="flex-1 text-left">RustDesk</span>
             </button>
           </div>
         )}
