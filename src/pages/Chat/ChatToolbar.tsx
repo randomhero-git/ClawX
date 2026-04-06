@@ -45,8 +45,8 @@ export function ChatToolbar() {
     <div className="flex items-center gap-2 w-full justify-center">
       <div className="hidden sm:flex items-center gap-1.5 rounded-full border border-primary/10 bg-primary/70 px-2.5 py-1 text-[13px] font-bold italic text-primary-foreground">
         <img
-          src={personaImg('b00/icon.png')}
-          alt="B00tyFuLL"
+          src={personaImg(theme === 'hero' ? 'hero/icon.png' : 'zero/icon.png')}
+          alt={theme === 'hero' ? 'Hero' : 'Zero'}
           className="h-5 w-5 rounded-full object-cover shrink-0"
         />
         <span>{t('toolbar.currentAgent', { agent: currentAgentName })}</span>

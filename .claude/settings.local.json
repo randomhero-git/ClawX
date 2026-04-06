@@ -21,7 +21,10 @@
       "Bash(curl -L \"https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/SpaceGrotesk-Variable.ttf\")",
       "mcp__alfred-brain__log_session",
       "mcp__alfred-brain__add_lesson_learned",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(find /c/Projects/ClawX-Alfred/src -type f \\\\\\(-name *.ts -o -name *.tsx \\\\\\))",
+      "Bash(xargs grep:*)",
+      "Bash(start \"\" \"C:/Projects/ClawX-Alfred/release/ClawX-0.3.6-win-x64.exe\")"
     ]
   }
 }
