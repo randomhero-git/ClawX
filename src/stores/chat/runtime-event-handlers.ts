@@ -10,6 +10,7 @@ import {
   hasErrorRecoveryTimer,
   hasNonToolAssistantContent,
   isToolOnlyMessage,
+  isInternalMessage,
   isToolResultRole,
   makeAttachedFile,
   setErrorRecoveryTimer,
@@ -77,6 +78,8 @@ export function handleRuntimeEventState(
           // Message complete - add to history and clear streaming
           const finalMsg = event.message as RawMessage | undefined;
           if (finalMsg) {
+            // Filter out internal/plumbing messages (tool call JSON, heartbeats, etc.)
+            if (isInternalMessage(finalMsg)) break;
             const updates = collectToolUpdates(finalMsg, resolvedState);
             if (isToolResultRole(finalMsg.role)) {
               // Resolve file path from the streaming assistant message's matching tool call
