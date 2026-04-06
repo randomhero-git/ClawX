@@ -20,7 +20,8 @@
       "Bash(pnpm dev:*)",
       "Bash(curl -L \"https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/SpaceGrotesk-Variable.ttf\")",
       "mcp__alfred-brain__log_session",
-      "mcp__alfred-brain__add_lesson_learned"
+      "mcp__alfred-brain__add_lesson_learned",
+      "Bash(git push:*)"
     ]
   }
 }

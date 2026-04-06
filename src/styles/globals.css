@@ -210,15 +210,15 @@
 }
 
 [data-theme="b00"] {
-  --primary: 328 100% 54%;
+  --primary: 328 90% 46%;
   --primary-foreground: 0 0% 0%;
-  --accent: 330 80% 51%;
+  --accent: 330 70% 43%;
   --accent-foreground: 0 0% 0%;
-  --ring: 328 100% 54%;
+  --ring: 328 90% 46%;
   --background: 306 100% 3%;
-  --foreground: 333 100% 85%;
-  --sidebar-accent: 328 100% 15%;
-  --sidebar-accent-foreground: 328 100% 54%;
+  --foreground: 333 60% 75%;
+  --sidebar-accent: 328 70% 14%;
+  --sidebar-accent-foreground: 328 90% 46%;
   --surface: 328 20% 8%;
   --surface-muted: 328 15% 6%;
 }

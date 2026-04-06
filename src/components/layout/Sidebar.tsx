@@ -232,8 +232,8 @@ export function Sidebar() {
         {!sidebarCollapsed && (
           <div className="flex items-center gap-2 px-2 overflow-hidden">
             <img src={window.electron.resourcesPath
-              ? `clawx-asset://resources/personas/rand0mlabz-logo.png`
-              : '/resources/personas/rand0mlabz-logo.png'
+              ? `clawx-asset://resources/personas/b00/b00-banner.png`
+              : '/resources/personas/b00/b00-banner.png'
             } alt="Rand0mLabz" className="h-[88px] w-auto" />
           </div>
         )}
