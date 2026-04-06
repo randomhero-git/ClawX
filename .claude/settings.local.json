@@ -2,7 +2,23 @@
   "permissions": {
     "allow": [
       "Bash(pnpm package:win)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(code .)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(taskkill /IM ClawX.exe /F)",
+      "Bash(taskkill /IM ClawX.exe /F /T)",
+      "Bash(git checkout:*)",
+      "Bash(taskkill /IM node.exe /F)",
+      "Bash(taskkill /F /FI \"WINDOWTITLE eq ClawX*\")",
+      "Bash(mkdir -p C:/Projects/ClawX-Alfred/src/assets/fonts)",
+      "Bash(curl -sL \"https://fonts.google.com/download?family=Pirata+One\" -o /tmp/pirata-one.zip)",
+      "Bash(cd /tmp)",
+      "Bash(unzip -o pirata-one.zip -d pirata-one)",
+      "Bash(curl -sL \"https://github.com/google/fonts/raw/main/ofl/pirataone/PirataOne-Regular.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/PirataOne-Regular.ttf\")",
+      "Bash(curl -L \"https://raw.githubusercontent.com/google/fonts/main/ofl/pirataone/PirataOne-Regular.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/PirataOne-Regular.ttf\")",
+      "Bash(pnpm dev:*)",
+      "Bash(curl -L \"https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/SpaceGrotesk-Variable.ttf\")"
     ]
   }
 }

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Pirata One';
-  src: url('../assets/fonts/PirataOne-Regular.ttf') format('truetype');
-  font-weight: 400;
+  font-family: 'Space Grotesk';
+  src: url('../assets/fonts/SpaceGrotesk-Variable.ttf') format('truetype');
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
@@ -68,6 +68,7 @@
 
   body {
     @apply text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     transition: background-color 2s ease, color 1s ease;
   }

@@ -428,7 +428,7 @@ export function ChatInput({ onSend, onStop, disabled = false, sending = false, i
             <Button
               variant="ghost"
               size="icon"
-              className="shrink-0 h-10 w-10 rounded-full text-muted-foreground hover:bg-primary/10 hover:text-foreground transition-colors"
+              className="shrink-0 h-10 w-10 rounded-full text-primary hover:bg-primary/10 hover:text-primary transition-colors"
               onClick={pickFiles}
               disabled={disabled || sending}
               title={t('composer.attachFiles')}
@@ -503,8 +503,8 @@ export function ChatInput({ onSend, onStop, disabled = false, sending = false, i
               size="icon"
               className={`shrink-0 h-10 w-10 rounded-full transition-colors ${
                 (sending || canSend)
-                  ? 'bg-primary/10 text-foreground hover:bg-primary/20'
-                  : 'text-muted-foreground/50 hover:bg-transparent bg-transparent'
+                  ? 'bg-primary/10 text-primary hover:bg-primary/20'
+                  : 'text-primary/50 hover:bg-transparent bg-transparent'
               }`}
               variant="ghost"
               title={sending ? t('composer.stop') : t('composer.send')}
@@ -517,7 +517,7 @@ export function ChatInput({ onSend, onStop, disabled = false, sending = false, i
             </Button>
           </div>
         </div>
-        <div className="mt-2.5 flex items-center justify-between gap-2 text-[11px] text-muted-foreground/60 px-4">
+        <div className="mt-2.5 flex items-center justify-between gap-2 text-[11px] text-primary/60 px-4">
           <div className="flex items-center gap-1.5">
             <div className={cn("w-1.5 h-1.5 rounded-full", gatewayStatus.state === 'running' ? "bg-green-500/80" : "bg-red-500/80")} />
             <span>

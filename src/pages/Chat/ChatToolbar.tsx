@@ -42,8 +42,8 @@ export function ChatToolbar() {
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <div className="hidden sm:flex items-center gap-1.5 rounded-full border border-primary/10 bg-white/70 px-3 py-1.5 text-[12px] font-medium text-foreground/80 dark:bg-primary/5">
+    <div className="flex items-center gap-2 w-full justify-center">
+      <div className="hidden sm:flex items-center gap-1.5 rounded-full border border-primary/10 bg-primary/70 px-2.5 py-1 text-[13px] font-bold italic text-primary-foreground">
         <img
           src={personaImg(theme === 'hero' ? 'hero/icon.png' : 'zero/icon.png')}
           alt={theme === 'hero' ? 'Hero' : 'Zero'}
@@ -51,43 +51,44 @@ export function ChatToolbar() {
         />
         <span>{t('toolbar.currentAgent', { agent: currentAgentName })}</span>
       </div>
-      {/* Refresh */}
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8"
-            onClick={() => refresh()}
-            disabled={loading}
-          >
-            <RefreshCw className={cn('h-4 w-4', loading && 'animate-spin')} />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{t('toolbar.refresh')}</p>
-        </TooltipContent>
-      </Tooltip>
-
-      {/* Thinking Toggle */}
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn(
-              'h-8 w-8',
-              showThinking && 'bg-primary/10 text-primary',
-            )}
-            onClick={toggleThinking}
-          >
-            <Brain className="h-4 w-4" />
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{showThinking ? t('toolbar.hideThinking') : t('toolbar.showThinking')}</p>
-        </TooltipContent>
-      </Tooltip>
+      <div className="absolute left-4 flex items-center">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 text-primary"
+              onClick={() => refresh()}
+              disabled={loading}
+            >
+              <RefreshCw className={cn('h-4 w-4', loading && 'animate-spin')} />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{t('toolbar.refresh')}</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
+      <div className="absolute right-4 flex items-center">
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                'h-8 w-8',
+                showThinking && 'bg-primary/10 text-primary',
+              )}
+              onClick={toggleThinking}
+            >
+              <Brain className="h-4 w-4" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{showThinking ? t('toolbar.hideThinking') : t('toolbar.showThinking')}</p>
+          </TooltipContent>
+        </Tooltip>
+      </div>
     </div>
   );
 }

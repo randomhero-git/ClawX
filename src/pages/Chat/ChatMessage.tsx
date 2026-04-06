@@ -334,17 +334,17 @@ function MessageBubble({
   return (
     <div
       className={cn(
-        "relative rounded-2xl px-4 py-3 font-['Pirata_One']",
+        "relative rounded-2xl px-4 py-3 text-[18px] font-bold italic",
         !isUser && 'w-full',
         isUser
-          ? 'bg-primary/50 text-primary-foreground shadow-sm'
-          : 'bg-background/50 text-foreground',
+          ? 'bg-primary/70 text-primary-foreground shadow-sm'
+          : 'bg-primary/60 text-foreground',
       )}
     >
       {isUser ? (
-        <p className="whitespace-pre-wrap break-words break-all text-sm">{text}</p>
+        <p className="whitespace-pre-wrap break-words break-all text-[18px]">{text}</p>
       ) : (
-        <div className="prose prose-sm dark:prose-invert max-w-none break-words break-all">
+        <div className="prose dark:prose-invert max-w-none break-words break-all text-[18px]">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
