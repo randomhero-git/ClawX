@@ -334,11 +334,11 @@ function MessageBubble({
   return (
     <div
       className={cn(
-        'relative rounded-2xl px-4 py-3',
+        "relative rounded-2xl px-4 py-3 font-['Pirata_One']",
         !isUser && 'w-full',
         isUser
-          ? 'bg-primary/40 text-primary-foreground shadow-sm'
-          : 'bg-background/40 text-foreground',
+          ? 'bg-primary/50 text-primary-foreground shadow-sm'
+          : 'bg-background/50 text-foreground',
       )}
     >
       {isUser ? (
