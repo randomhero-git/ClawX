@@ -166,14 +166,15 @@ function App() {
 
   // Hero/Zero theme rotation
   useEffect(() => {
-    const themes = ['hero', 'zero'];
+    const themes = ['b00'];
     const root = window.document.documentElement;
 
     const bgUrl = (persona: string) => {
       const base = window.electron.resourcesPath;
+      const bg = Math.random() < 0.5 ? 'background1.png' : 'background2.png';
       const url = base
-        ? `url('clawx-asset://resources/personas/${persona}/background.png')`
-        : `url('/resources/personas/${persona}/background.png')`;
+        ? `url('clawx-asset://resources/personas/${persona}/${bg}')`
+        : `url('/resources/personas/${persona}/${bg}')`;
       return url;
     };
 

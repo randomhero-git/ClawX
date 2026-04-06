@@ -18,7 +18,9 @@
       "Bash(curl -sL \"https://github.com/google/fonts/raw/main/ofl/pirataone/PirataOne-Regular.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/PirataOne-Regular.ttf\")",
       "Bash(curl -L \"https://raw.githubusercontent.com/google/fonts/main/ofl/pirataone/PirataOne-Regular.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/PirataOne-Regular.ttf\")",
       "Bash(pnpm dev:*)",
-      "Bash(curl -L \"https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/SpaceGrotesk-Variable.ttf\")"
+      "Bash(curl -L \"https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/SpaceGrotesk%5Bwght%5D.ttf\" -o \"C:/Projects/ClawX-Alfred/src/assets/fonts/SpaceGrotesk-Variable.ttf\")",
+      "mcp__alfred-brain__log_session",
+      "mcp__alfred-brain__add_lesson_learned"
     ]
   }
 }

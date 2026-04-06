@@ -1,0 +1,192 @@
+{
+  "_comment": "REFERENCE TEMPLATE ONLY. The app does not read this file at runtime. All persona values are hardcoded in globals.css, App.tsx, ChatToolbar.tsx, and Sidebar.tsx. This file documents the contract for each persona so new ones can be added by following the pattern.",
+
+  "personas": {
+    "hero": {
+      "id": "hero",
+      "displayName": "Hero",
+      "dataThemeAttribute": "hero",
+      "colors": {
+        "_format": "HSL triplets without hsl() wrapper, as used in globals.css [data-theme] blocks",
+        "primary": "24 95% 53%",
+        "primaryForeground": "0 0% 0%",
+        "accent": "24 95% 53%",
+        "accentForeground": "0 0% 0%",
+        "ring": "24 95% 53%",
+        "background": "0 0% 4%",
+        "foreground": "0 0% 95%",
+        "sidebarAccent": "24 80% 20%",
+        "sidebarAccentForeground": "24 95% 53%",
+        "surface": "24 20% 8%",
+        "surfaceMuted": "24 15% 6%"
+      },
+      "assets": {
+        "_basePath": "resources/personas/hero/",
+        "avatar": "resources/personas/hero/avatar.png",
+        "icon": "resources/personas/hero/icon.png",
+        "backgrounds": ["resources/personas/hero/background.png"]
+      },
+      "rotation": {
+        "enabled": true,
+        "minMinutes": 2,
+        "maxMinutes": 120,
+        "_note": "Rotates with other personas in the theme pool defined in App.tsx"
+      },
+      "buttons": [
+        {
+          "label": "Gaming Mode",
+          "icon": "Gamepad2",
+          "actionType": "toggle",
+          "action": "setGamingMode(!gamingMode)"
+        },
+        {
+          "label": "Crush",
+          "icon": "Zap",
+          "actionType": "skill",
+          "action": "launch Crush",
+          "_note": "Navigates to chat, injects text, auto-submits"
+        },
+        {
+          "label": "Proxmox",
+          "icon": "Server",
+          "actionType": "openExternal",
+          "action": "https://10.0.0.58:8006"
+        },
+        {
+          "label": "Alfred UI",
+          "icon": "Layout",
+          "actionType": "openExternal",
+          "action": "http://10.0.0.18:8080"
+        },
+        {
+          "label": "RustDesk",
+          "icon": "Monitor",
+          "actionType": "openExternal",
+          "action": "rustdesk://"
+        }
+      ]
+    },
+
+    "zero": {
+      "id": "zero",
+      "displayName": "Zero",
+      "dataThemeAttribute": "zero",
+      "colors": {
+        "primary": "102 73% 45%",
+        "primaryForeground": "0 0% 0%",
+        "accent": "102 73% 45%",
+        "accentForeground": "0 0% 0%",
+        "ring": "102 73% 45%",
+        "background": "0 0% 4%",
+        "foreground": "0 0% 95%",
+        "sidebarAccent": "102 73% 11%",
+        "sidebarAccentForeground": "102 73% 45%",
+        "surface": "142 20% 8%",
+        "surfaceMuted": "142 15% 6%"
+      },
+      "assets": {
+        "_basePath": "resources/personas/zero/",
+        "avatar": "resources/personas/zero/avatar.png",
+        "icon": "resources/personas/zero/icon.png",
+        "backgrounds": ["resources/personas/zero/background.png"]
+      },
+      "rotation": {
+        "enabled": true,
+        "minMinutes": 2,
+        "maxMinutes": 120
+      },
+      "buttons": [
+        {
+          "label": "Gaming Mode",
+          "icon": "Gamepad2",
+          "actionType": "toggle",
+          "action": "setGamingMode(!gamingMode)"
+        },
+        {
+          "label": "Crush",
+          "icon": "Zap",
+          "actionType": "skill",
+          "action": "launch Crush"
+        },
+        {
+          "label": "Proxmox",
+          "icon": "Server",
+          "actionType": "openExternal",
+          "action": "https://10.0.0.58:8006"
+        },
+        {
+          "label": "Alfred UI",
+          "icon": "Layout",
+          "actionType": "openExternal",
+          "action": "http://10.0.0.18:8080"
+        },
+        {
+          "label": "RustDesk",
+          "icon": "Monitor",
+          "actionType": "openExternal",
+          "action": "rustdesk://"
+        }
+      ]
+    },
+
+    "b00": {
+      "id": "b00",
+      "displayName": "B00tyFuLL",
+      "dataThemeAttribute": "b00",
+      "colors": {
+        "primary": "328 100% 54%",
+        "primaryForeground": "0 0% 0%",
+        "accent": "330 80% 51%",
+        "accentForeground": "0 0% 0%",
+        "ring": "328 100% 54%",
+        "background": "306 100% 3%",
+        "foreground": "333 100% 85%",
+        "sidebarAccent": "328 100% 15%",
+        "sidebarAccentForeground": "328 100% 54%",
+        "surface": "328 20% 8%",
+        "surfaceMuted": "328 15% 6%"
+      },
+      "assets": {
+        "_basePath": "resources/personas/b00/",
+        "avatar": "resources/personas/b00/avatar.png",
+        "icon": "resources/personas/b00/icon.png",
+        "backgrounds": [
+          "resources/personas/b00/background1.png",
+          "resources/personas/b00/background2.png"
+        ],
+        "_backgroundNote": "Randomly select one on mount. No rotation after initial selection."
+      },
+      "rotation": {
+        "enabled": false,
+        "_note": "Single persona build. Theme pool is ['b00']. Load on mount, no rotation."
+      },
+      "buttons": [
+        {
+          "label": "Spotify",
+          "icon": "Music",
+          "actionType": "skill",
+          "action": "launch Spotify",
+          "_note": "Launch via openExternal or skill — TBD"
+        },
+        {
+          "label": "Photos",
+          "icon": "Image",
+          "actionType": "openExternal",
+          "action": "https://photos.randomhero.dev"
+        },
+        {
+          "label": "Files",
+          "icon": "FolderOpen",
+          "actionType": "openExternal",
+          "action": "https://files.randomhero.dev"
+        },
+        {
+          "label": "Skylight",
+          "icon": "Monitor",
+          "actionType": "openExternal",
+          "action": "https://app.ourskylight.com"
+        }
+      ]
+    }
+  }
+}
