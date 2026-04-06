@@ -605,13 +605,16 @@ function isInternalMessage(msg: { role?: unknown; content?: unknown }): boolean 
   if (msg.role === 'assistant') {
     if (/^(HEARTBEAT_OK|NO_REPLY)\s*$/.test(text)) return true;
   }
-  // Filter tool call JSON that leaks from gateway (e.g. {"action":"read_file","path":"..."})
+  // Filter tool call JSON that leaks from gateway
   if (text) {
     const trimmed = text.trim();
-    if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+    if ((trimmed.startsWith('{') && trimmed.endsWith('}')) ||
+        (trimmed.startsWith('[') && trimmed.endsWith(']'))) {
       try {
-        const parsed = JSON.parse(trimmed);
-        if (parsed && typeof parsed === 'object' && 'action' in parsed) return true;
+        JSON.parse(trimmed);
+        // If the entire message is valid JSON with no surrounding text, suppress it.
+        // Legitimate user/assistant messages are never pure JSON objects.
+        return true;
       } catch { /* not JSON, show normally */ }
     }
   }
